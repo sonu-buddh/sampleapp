@@ -1,0 +1,39 @@
+<div class="card">
+  <div class="card-body">
+    <%= form_with(model: student) do |form| %>
+      <% if student.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+            <ul>
+              <% student.errors.each do |error| %>
+                <li><%= error.full_message %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+      <%= form.hidden_field :user_id, value: current_user.id %>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "form-control", placeholder: "Name" %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= form.label :email %>
+          <%= form.text_field :email, class: "form-control", placeholder: "Email" %>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <%= form.label :profile_pic %>
+          <%= form.file_field :profile_pic, class: "form-control" %>
+          <%= image_tag form.object.profile_pic, size: '200x200' if form.object.profile_pic.present? %>
+        </div>
+      </div>
+      <hr>
+      <%= form.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
