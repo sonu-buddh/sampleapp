@@ -9,7 +9,8 @@ img {
 .item {
     width: 120px;
     min-height: 120px;
-    max-height: auto;
+    max-height: 250px;
+    max-width: 250px;
     float: left;
     margin: 3px;
     padding: 3px;
